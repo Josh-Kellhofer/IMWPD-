@@ -20,7 +20,7 @@ const AddCarPage = () => {
     try {
       let response = await axios.post("http://127.0.0.1:8000/api/cars/", formData, {
         headers: {
-          Authorization: "Bearer " + token
+          Authorization: "Bearer " + token,
         }
       })
       navigate("/")
@@ -60,6 +60,7 @@ const AddCarPage = () => {
             onChange={handleInputChange}
             />
         </label>
+        <button>Add Car!</button>
       </form>
     </div>
   )
