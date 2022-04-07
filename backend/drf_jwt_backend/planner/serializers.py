@@ -6,5 +6,5 @@ from .models import Planner
 class PlannerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Planner
-        fields = ['id', 'user', 'first_name', 'last_name', 'city', 'state', 'zipcode', 'user_id']
+        fields = ['id', 'user', 'firstName', 'lastName', 'city', 'state', 'zipcode', 'user_id']
         depth = 1
