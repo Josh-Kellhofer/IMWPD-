@@ -7,5 +7,5 @@ from .models import Activities
 class ActivitiesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Activities
-        fields = ['id', 'breakfast', 'morning_activity', 'lunch', 'afternoon_activity', 'dinner', 'night_time_activity', 'user_id']
+        fields = ['id', 'breakfast', 'morning_activity', 'lunch', 'afternoon_activity', 'dinner', 'night_time_activity',]
         depth = 1
