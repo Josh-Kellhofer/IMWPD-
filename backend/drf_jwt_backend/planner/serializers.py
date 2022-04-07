@@ -3,7 +3,6 @@ from .models import Planner
 
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
 
-
 class PlannerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Planner

@@ -1,8 +1,7 @@
 from django.db import models
-
-# Create your models here.
-from django.db import models
 from django.contrib.auth.models import User
+# Create your models here.
+
 
 
 class Planner(models.Model):
@@ -12,7 +11,4 @@ class Planner(models.Model):
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
     zipcode = models.IntegerField()
-    
-
-
 
