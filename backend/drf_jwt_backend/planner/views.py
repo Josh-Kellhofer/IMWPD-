@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 
 class PlannerList(APIView):
 
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         planner = Planner.objects.all()

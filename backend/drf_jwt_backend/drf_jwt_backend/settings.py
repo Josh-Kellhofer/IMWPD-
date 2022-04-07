@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'saved_plan',
     'restaurant',
     'activities',
+    
    
 ]
 
@@ -153,6 +154,11 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(days=10),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=20),
 }
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',)
+}
+
 
 try:
     from drf_jwt_backend.local_settings import *
