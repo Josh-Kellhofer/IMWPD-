@@ -23,4 +23,5 @@ urlpatterns = [
     path('api/planner', include('planner.urls')),
     path('api/restaurant', include('restaurant.urls')),
     path('api/activities', include('activities.urls')),
+    path('api/saved_plan', include('saved_plan.urls'))
 ]

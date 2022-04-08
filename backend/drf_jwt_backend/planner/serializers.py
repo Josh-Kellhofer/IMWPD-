@@ -8,3 +8,5 @@ class PlannerSerializer(serializers.ModelSerializer):
         model = Planner
         fields = ['id', 'user', 'firstName', 'lastName', 'city', 'state', 'zipcode', 'user_id']
         depth = 1
+
+    user_id = serializers.IntegerField(write_only=True)

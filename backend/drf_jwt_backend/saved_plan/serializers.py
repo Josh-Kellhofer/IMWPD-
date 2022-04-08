@@ -6,5 +6,5 @@ from .models import SavedPlan
 class SavedPlanSerializer(serializers.ModelSerializer):
     class Meta:
         model = SavedPlan
-        fields = ['planner', 'breakfast', 'morning_activity', 'lunch', 'afternoon_activity', 'dinner', 'night_time_activity', 'user_id']
+        fields = ['planner', 'breakfast', 'morning_activity', 'lunch', 'afternoon_activity', 'dinner', 'night_time_activity',]
         depth = 1
