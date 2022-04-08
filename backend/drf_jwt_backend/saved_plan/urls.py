@@ -6,6 +6,7 @@ from saved_plan import views
 # ]
 
 urlpatterns = [
-  path('', views.SavedPlanList.as_view())
+  path('', views.saved_plan_list),
+  path('<int:pk>/', views.saved_plan_detail),
 ]
 

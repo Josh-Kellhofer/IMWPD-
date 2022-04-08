@@ -10,13 +10,14 @@ from django.shortcuts import get_object_or_404
 
 
 @api_view(['GET', 'POST'])
+@permission_classes([AllowAny])
 def planner_list(request):
-    
-    
+            
     if request.method == 'GET':
       planner = Planner.objects.all()
       serializer = PlannerSerializer(planner, many=True)
       return Response(serializer.data)
+
     elif request.method == 'POST':
       serializer = PlannerSerializer(data=request.data)
       serializer.is_valid(raise_exception=True)
@@ -24,16 +25,21 @@ def planner_list(request):
       return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([AllowAny])
 def planner_detail(request, pk):
+
       planners = get_object_or_404(Planner, pk=pk)
+
       if request.method == 'GET':
         serializer = PlannerSerializer(planners);
         return Response(serializer.data)
+
       elif request.method == "PUT":
         serializer = PlannerSerializer(planners, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
+        
       elif request.method == 'DELETE':
         planners.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

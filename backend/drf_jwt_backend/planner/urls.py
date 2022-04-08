@@ -3,5 +3,5 @@ from planner import views
 
 urlpatterns = [
   path('', views.planner_list),
-  path('', views.planner_detail),
+  path('<int:pk>/', views.planner_detail),
 ]

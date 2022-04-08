@@ -11,13 +11,14 @@ from django.shortcuts import get_object_or_404
 
 
 @api_view(['GET', 'POST'])
+@permission_classes([AllowAny])
 def activities_list(request):
-    
-    
+        
     if request.method == 'GET':
       activity = Activities.objects.all()
       serializer = ActivitiesSerializer(activity, many=True)
       return Response(serializer.data)
+
     elif request.method == 'POST':
       serializer = ActivitiesSerializer(data=request.data)
       serializer.is_valid(raise_exception=True)
@@ -25,16 +26,21 @@ def activities_list(request):
       return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([AllowAny])
 def activities_detail(request, pk):
+
       activities = get_object_or_404(Activities, pk=pk)
+
       if request.method == 'GET':
-        serializer = ActivitiesSerializer(activities);
+        serializer = ActivitiesSerializer(activities)
         return Response(serializer.data)
+
       elif request.method == "PUT":
         serializer = ActivitiesSerializer(activities, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
+        
       elif request.method == 'DELETE':
         activities.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

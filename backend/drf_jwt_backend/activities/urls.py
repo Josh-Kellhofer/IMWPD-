@@ -3,5 +3,5 @@ from activities import views
 
 urlpatterns = [
   path('', views.activities_list),
-  path('', views.activities_detail),
+  path('<int:pk>/', views.activities_detail),
 ]

@@ -20,8 +20,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/', include('authentication.urls')),
     path('api/cars/', include('cars.urls')),
-    path('api/planner', include('planner.urls')),
-    path('api/restaurant', include('restaurant.urls')),
-    path('api/activities', include('activities.urls')),
-    path('api/saved_plan', include('saved_plan.urls'))
+    path('api/planner/', include('planner.urls')),
+    path('api/restaurant/', include('restaurant.urls')),
+    path('api/activities/', include('activities.urls')),
+    path('api/saved_plan/', include('saved_plan.urls')),
 ]
