@@ -16,6 +16,7 @@ import AddCarPage from "./pages/AddCarPage/AddCarPage";
 // Component Imports
 // import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
+import Home from './components/DisplayPages/Home';
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
@@ -23,11 +24,12 @@ import PrivateRoute from "./utils/PrivateRoute";
 function App() {
   return (
     <Router>
-      <Navbar2 />
-      <Routes>
-        <Route path='/' exact />
+        <Navbar2 />
+        <Routes>
+          <Route exact path='/' element={<Home />} />
         </Routes>
-    </Router>
+      </Router>
+    
     
     // <div>
     //   <Navbar />
