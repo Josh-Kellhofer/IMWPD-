@@ -6,9 +6,20 @@ import './Navbar.css'
 
 function Navbar2() {
   const [click, setClick] = useState(false) //sets the menu-icon to false (The icon itself)
+  const [button, setButton] = useState(true)
 
   const handleClick = () => setClick(!click) //turns the menu-icon to an X
   const closeMobileMenu = () => setClick(false);
+
+  const showButton = () => {
+    if(window.innerWidth <= 960) {
+      setButton(false);
+    } else {
+      setButton(true);
+    }
+  };
+
+  window.addEventListener('resize', showButton);
 
   return (
     <>
@@ -42,6 +53,7 @@ function Navbar2() {
             </Link>
           </li>
         </ul>
+        {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
         </div>
         <div className='menu-icon' onClick={handleClick}>
           
