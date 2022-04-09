@@ -5,9 +5,9 @@ import './Navbar.css'
 // import Dropdown from './Dropdown'
 
 function Navbar2() {
-  const [click, setClick] = useState(false)
+  const [click, setClick] = useState(false) //sets the menu-icon to false (The icon itself)
 
-  const handleClick = () => setClick(!click)
+  const handleClick = () => setClick(!click) //turns the menu-icon to an X
 
   return (
     <>
@@ -16,6 +16,9 @@ function Navbar2() {
         <Link to='/' className='navbar-logo'>
           TRVL <i className="fab fa-typo3"></i>
         </Link>
+        <div className ='menu-icon' onClick={handleClick}>
+          <i className={click ? 'fas fa-times' : 'fas fa-bars'} /> 
+        </div>
         </div>
         <div className='menu-icon' onClick={handleClick}>
           
