@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, UseEffect, useEffect } from 'react';
 import { Button } from './Button'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
@@ -11,6 +11,7 @@ function Navbar2() {
   const handleClick = () => setClick(!click) //turns the menu-icon to an X
   const closeMobileMenu = () => setClick(false);
 
+  //Turns the NavBar Menu into a single icon if Window is shrunk down
   const showButton = () => {
     if(window.innerWidth <= 960) {
       setButton(false);
@@ -19,7 +20,11 @@ function Navbar2() {
     }
   };
 
-  window.addEventListener('resize', showButton);
+  useEffect(() => {
+    showButton()
+  }, []);
+
+  window.addEventListener('resize', showButton); //listener to turn NavBar Menu into a single icon if Window is shrunk down
 
   return (
     <>
