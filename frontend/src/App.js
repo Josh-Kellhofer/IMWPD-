@@ -18,6 +18,7 @@ import AddCarPage from "./pages/AddCarPage/AddCarPage";
 // import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import Home from './components/DisplayPages/Home';
+import ArrayShuffler from './components/ArrayShuffler/ArrayShuffler'
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
@@ -26,11 +27,17 @@ import axios from "axios";
 function App() {
 
   const [entries, setEntries] = useState([]);
+  const [randomEntries, setRandomEntries] = useState([]);
 
   async function getAllActivities() {
     let response = await axios.get('http://127.0.0.1:8000/api/activities/');
     setEntries(response.data);
     console.log(response.data)
+  }
+
+  async function getRandomActivities() {
+    let randomActivity = await axios.get('http://127.0.0.1:8000/api/activities/');
+
   }
 
   useEffect(() => {
@@ -44,6 +51,9 @@ function App() {
         <Navbar2 />
         <div className='border-box'>
         <DisplayActivities parentEntries={entries} />
+       </div>
+       <div className='border-box'>
+        {/* <randomArrayShuffle /> */}
        </div>
         <Routes>
           <Route exact path='/' element={<Home />} />

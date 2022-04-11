@@ -19,8 +19,8 @@ const DisplayActivities = (props) => {
         <tbody>
           {props.parentEntries.map((entry, index) => { 
           return (
-               <tr>
-            {/* <tr key={index}> */}
+              
+            <tr key={index}>
                 <td>{index + 1 }</td>
                 <td>{entry.breakfast}</td>
                 {/* <td><button onClick={() => props.selectGame(entry)}>{entry.name}</button></td> */}
