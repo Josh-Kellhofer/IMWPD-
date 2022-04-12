@@ -12,27 +12,9 @@ function randomArrayShuffle(array) {
   return array;
 }
 
-// let randomMorningActivty = entries.filter(activity => activity.morning_activity);
-// randomArrayShuffle(randomMorningActivty);
-// console.log("Random Array Morning Activity", randomArrayShuffle(randomMorningActivty));
-
 var alphabet=["a","b","c","d","e"];
 randomArrayShuffle(alphabet); 
 console.log("Random Array Shuffler", randomArrayShuffle(alphabet))
-//alphabet is now shuffled randomly = ["d", "c", "b", "e", "a"]
-
-    
 
 
 
-//     console.log("Random Morning Activity", randomMorningActivty)
-
-//     let mapActivities = randomActivity.map
-//     })
-//   }
-// }
-
-
-
-
-export default randomArrayShuffle;

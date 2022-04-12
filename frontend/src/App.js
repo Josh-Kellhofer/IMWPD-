@@ -1,3 +1,18 @@
+// import React from "react";
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker, 
+  InfoWindow,
+} from "@react-google-maps/api";
+import { formatRelative } from "date-fns";
+
+
+import "@reach/combobox/styles.css";
+
+
+
+
 // General Imports
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
@@ -19,50 +34,56 @@ import AddCarPage from "./pages/AddCarPage/AddCarPage";
 import Footer from "./components/Footer/Footer";
 import Home from './components/DisplayPages/Home';
 import ArrayShuffler from './components/ArrayShuffler/ArrayShuffler'
+import RandomActivities from "./components/RandomActivities/RandomActivities";
+import Google from "./components/GoogleMaps/GoogleMap";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
 import axios from "axios";
 
-function App() {
+// function App() {
 
-  const [entries, setEntries] = useState([]);
-  const [randomEntries, setRandomEntries] = useState([]);
+//   const [entries, setEntries] = useState([]);
+  // const [randomEntries, setRandomEntries] = useState([]);
 
-  async function getAllActivities() {
-    let response = await axios.get('http://127.0.0.1:8000/api/activities/');
-    setEntries(response.data);
-    console.log(response.data)
-  }
+  // async function getAllActivities() {
+  //   let response = await axios.get('http://127.0.0.1:8000/api/activities/');
+  //   setEntries(response.data);
+  //   console.log(response.data)
+  // }
 
-  async function getRandomActivities() {
-    let randomActivity = await axios.get('http://127.0.0.1:8000/api/activities/');
+  // async function getRandomActivities() {
+  //   let randomActivity = await axios.get('http://127.0.0.1:8000/api/activities/');
 
-  }
+  // }
 
-  useEffect(() => {
-    getAllActivities();
-  }, [])
+  // useEffect(() => {
+  //   getAllActivities();
+  // }, [])
 
-  return (
+  // return (
 
-    <div>
-    <Router>
-        <Navbar2 />
-        <div className='border-box'>
-        <DisplayActivities parentEntries={entries} />
-       </div>
-       <div className='border-box'>
-        {/* <randomArrayShuffle /> */}
-       </div>
-        <Routes>
-          <Route exact path='/' element={<Home />} />
-        
-        </Routes>
+    
+
+
+    // <div>
+    // <Router>
+    //     <Navbar2 />
+    //     <div className='border-box'>
+    //     <DisplayActivities parentEntries={entries} />
+    //    </div>
+    //    <div className='border-box'>
+    //     {/* <RandomActivities entries={entries} /> */}
+    //    </div>
        
-        <Footer />
-      </Router>
-      </div>
+    //     <Routes>
+    //       <Route exact path='/' element={<Home />} />
+        
+    //     </Routes>
+       
+    //     <Footer />
+    //   </Router>
+    //   </div>
    
     
     
@@ -83,7 +104,41 @@ function App() {
 //       </Routes>
 //       <Footer />
 //     </div>
-  );
+//   );
+// }
+
+// export default App;
+
+const libraries = ["places"];
+const mapContainerStyle = {
+  width: "100vw",
+  height: "100vh",
 }
 
-export default App;
+const center = {
+  lat: 43.653225,
+  lng: -79.383186,
+};
+
+export default function App() {
+
+  const {isLoaded, loadError} = useLoadScript({
+    googleMapsApiKey: ProcessingInstruction.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    libraries,
+  });
+
+  if (loadError) return "Error loading maps";
+  if (!isLoaded) return "Loading Maps";
+
+return (
+  <div>
+    <GoogleMap 
+      mapContainerStyle={mapContainerStyle}
+      zoom={8}
+      center={center}
+      ></GoogleMap>
+  </div>
+
+);
+}
+
