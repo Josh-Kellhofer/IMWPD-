@@ -35,7 +35,7 @@ import GoogleMaps from "./components/DisplayPages/GoogleMaps";
 function App() {
 
   const [entries, setEntries] = useState([]);
-  // const [randomEntries, setRandomEntries] = useState([]);
+  
 
   async function getAllActivities() {
     let response = await axios.get('http://127.0.0.1:8000/api/activities/');

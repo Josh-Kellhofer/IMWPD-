@@ -1,31 +1,59 @@
-import React from "react";
+import React, {useEffect, useState } from "react";
 import randomArrayShuffle from "../ArrayShuffler/ArrayShuffler";
 import { Chart } from "react-google-charts";
 
 
 
 const RandomActivities = ({entries}) => {
+  console.log(entries)
 
-  function GenerateActivity() {
+// How can you break apart entries into individual arrays for each feature (breakfast, morning_activity, etc)
 
-  
-    console.log(entries);
+ 
 
-let randMornActivty = entries.filter(activity => activity.morning_activity);
+   let breakfastArray = entries.map(breakfast => {
+        return breakfast.breakfast;
+    });
+       console.log("Breakfast Arrays", breakfastArray);
 
-let activitiesArray = randMornActivty.map(activity => {
-  return activity.activitiesArray;
-});
+   let morningActivity = entries.map(mornactivity => {
+        return mornactivity.morning_activity
+    });
+        console.log("Morning Activity Array", morningActivity);
 
-randomArrayShuffle(activitiesArray);
+   let lunch = entries.map(lunch => {
+         return lunch.lunch
+      });
+        console.log("Lunch", lunch);
 
-console.log("Random Array Morning Activity", randomArrayShuffle(activitiesArray));
+   let afternoonActivity = entries.map(afterActivity => {
+          return afterActivity.afternoon_activity
+        });
+         console.log("Afternoon Activity Array", afternoonActivity);
 
-// useEffect(() => {
-//   GenerateActivity();
-// }, [])
+   let dinner = entries.map(dinner => {
+          return dinner.dinner
+         });
+         console.log("Dinner", dinner);
 
-    
+   let nightActivity = entries.map(nightTimeActivity => {
+          return nightTimeActivity.night_time_activity
+        });
+         console.log("Night Time Activity Array", nightActivity);
+
+  // create a new array with random items from each feature array
+
+        
+
+
+  // then return that random plan in the JSX below
+
+  return(<>{entries ? <p>Loaded</p> : <p>Loading...</p>}</>)
+// };
+}
+export default RandomActivities;
+
+
 
   
 //     const data = [
@@ -40,11 +68,22 @@ console.log("Random Array Morning Activity", randomArrayShuffle(activitiesArray)
 //     return (
 //         <Chart chartType="ColumnChart" width="100%" height="400px" data={data} />
 //       );
-    }
 
+// function GenerateActivity() {
 
-  };
-
-
-
-export default RandomActivities;
+  //     const [randomActivities, setRandomActivities] = useState([]);
+  
+  //     useEffect(() => {
+  //   GenerateActivity();
+  // }, [])
+    
+  // let randMornActivty = entries.filter(activity => activity.morning_activity);
+  
+  
+  
+  
+  // randomArrayShuffle(activitiesArray);
+  
+  // console.log("Random Array Morning Activity", randomArrayShuffle(activitiesArray));
+  
+  //     }
