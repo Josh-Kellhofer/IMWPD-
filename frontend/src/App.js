@@ -1,18 +1,3 @@
-// import React from "react";
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker, 
-  InfoWindow,
-} from "@react-google-maps/api";
-import { formatRelative } from "date-fns";
-
-
-import "@reach/combobox/styles.css";
-
-
-
-
 // General Imports
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
@@ -28,62 +13,70 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import AddCarPage from "./pages/AddCarPage/AddCarPage";
+import Home from "./components/DisplayPages/Home";
+import Products from "./components/DisplayPages/Products";
+import SignUp from "./components/DisplayPages/SignUp";
+
 
 // Component Imports
 // import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
-import Home from './components/DisplayPages/Home';
 import ArrayShuffler from './components/ArrayShuffler/ArrayShuffler'
 import RandomActivities from "./components/RandomActivities/RandomActivities";
-import Google from "./components/GoogleMaps/GoogleMap";
+
+
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
 import axios from "axios";
+import GoogleMaps from "./components/DisplayPages/GoogleMaps";
 
-// function App() {
 
-//   const [entries, setEntries] = useState([]);
+function App() {
+
+  const [entries, setEntries] = useState([]);
   // const [randomEntries, setRandomEntries] = useState([]);
 
-  // async function getAllActivities() {
-  //   let response = await axios.get('http://127.0.0.1:8000/api/activities/');
-  //   setEntries(response.data);
-  //   console.log(response.data)
-  // }
+  async function getAllActivities() {
+    let response = await axios.get('http://127.0.0.1:8000/api/activities/');
+    setEntries(response.data);
+    console.log(response.data)
+  }
 
   // async function getRandomActivities() {
   //   let randomActivity = await axios.get('http://127.0.0.1:8000/api/activities/');
 
   // }
 
-  // useEffect(() => {
-  //   getAllActivities();
-  // }, [])
+  useEffect(() => {
+    getAllActivities();
+  }, [])
 
-  // return (
-
+  return (
     
-
-
-    // <div>
-    // <Router>
-    //     <Navbar2 />
-    //     <div className='border-box'>
-    //     <DisplayActivities parentEntries={entries} />
-    //    </div>
-    //    <div className='border-box'>
-    //     {/* <RandomActivities entries={entries} /> */}
-    //    </div>
+    <div>
+    <Router>
+        <Navbar2 />
+        <div className='border-box'>
+        <DisplayActivities parentEntries={entries} />
+       </div>
+       <div className='border-box'>
+        {/* <RandomActivities entries={entries} /> */}
+       </div>
        
-    //     <Routes>
-    //       <Route exact path='/' element={<Home />} />
-        
-    //     </Routes>
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+          <Route exact path='/services' element={<GoogleMaps />} />
+          <Route exact path='/products' element={<Products />} />
+          <Route exact path='/sign-up' element={<SignUp />} />
+          <Route path="/register" element={<RegisterPage />} />
+         <Route path="/login" element={<LoginPage />} />
+         <Route path="/addcar" element={<PrivateRoute><AddCarPage /> </PrivateRoute>}/>
+        </Routes>
        
-    //     <Footer />
-    //   </Router>
-    //   </div>
+        <Footer />
+      </Router>
+      </div>
    
     
     
@@ -98,47 +91,12 @@ import axios from "axios";
 //             </PrivateRoute>
 //           }
 //         />
-//         <Route path="/register" element={<RegisterPage />} />
-//         <Route path="/login" element={<LoginPage />} />
-//         <Route path="/addcar" element={<PrivateRoute><AddCarPage /> </PrivateRoute>}/>
+//        
 //       </Routes>
 //       <Footer />
 //     </div>
-//   );
-// }
-
-// export default App;
-
-const libraries = ["places"];
-const mapContainerStyle = {
-  width: "100vw",
-  height: "100vh",
+  );
 }
 
-const center = {
-  lat: 43.653225,
-  lng: -79.383186,
-};
-
-export default function App() {
-
-  const {isLoaded, loadError} = useLoadScript({
-    googleMapsApiKey: ProcessingInstruction.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-    libraries,
-  });
-
-  if (loadError) return "Error loading maps";
-  if (!isLoaded) return "Loading Maps";
-
-return (
-  <div>
-    <GoogleMap 
-      mapContainerStyle={mapContainerStyle}
-      zoom={8}
-      center={center}
-      ></GoogleMap>
-  </div>
-
-);
-}
+export default App;
 

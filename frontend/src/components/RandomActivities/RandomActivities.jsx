@@ -1,24 +1,29 @@
-// import React from "react";
-// import randomArrayShuffle from "../ArrayShuffler/ArrayShuffler";
-// import { Chart } from "react-google-charts";
+import React from "react";
+import randomArrayShuffle from "../ArrayShuffler/ArrayShuffler";
+import { Chart } from "react-google-charts";
 
 
-// const RandomActivities = ({entries}) => {
 
-//   function generateActivity() {
+const RandomActivities = ({entries}) => {
+
+  function GenerateActivity() {
 
   
-//     console.log(entries);
+    console.log(entries);
 
-// let randMornActivty = entries.filter(activity => activity.morning_activity);
+let randMornActivty = entries.filter(activity => activity.morning_activity);
 
-// let activitiesArray = randMornActivty.map(activity => {
-//   return activity.activitiesArray;
-// });
+let activitiesArray = randMornActivty.map(activity => {
+  return activity.activitiesArray;
+});
 
-// randomArrayShuffle(activitiesArray);
+randomArrayShuffle(activitiesArray);
 
-// console.log("Random Array Morning Activity", randomArrayShuffle(activitiesArray));
+console.log("Random Array Morning Activity", randomArrayShuffle(activitiesArray));
+
+// useEffect(() => {
+//   GenerateActivity();
+// }, [])
 
     
 
@@ -35,11 +40,11 @@
 //     return (
 //         <Chart chartType="ColumnChart" width="100%" height="400px" data={data} />
 //       );
-//     }
+    }
 
 
-//   };
+  };
 
 
 
-// export default RandomActivities;
+export default RandomActivities;

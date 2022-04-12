@@ -79,7 +79,7 @@ button:hover {
 }
 
 .home,
-.services,
+/* .services, */
 .products,
 .sign-up {
   display: flex;
@@ -90,12 +90,12 @@ button:hover {
 }
 
 .services {
-  /* background-image: url('/images/img-2.jpg'); */
+  background-image: src="/images/img-2.jpg";
   background-position: center;
-  background-size: cover;
+  /* background-size: cover;
   background-repeat: no-repeat;
   color: #fff;
-  font-size: 100px;
+  font-size: 100px; */
 }
 
 .products {

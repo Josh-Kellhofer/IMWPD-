@@ -44,17 +44,17 @@ function Navbar2() {
           </li>
           <li className='nav-item'>
             <Link to='/services' className='nav-links' onClick={closeMobileMenu}>
-              Services
+              Google Maps
             </Link>
           </li>
           <li className='nav-item'>
             <Link to='/products' className='nav-links' onClick={closeMobileMenu}>
-              Products
+              Google Places
             </Link>
           </li>
           <li className='nav-item'>
             <Link to='/sign-up' className='nav-links' onClick={closeMobileMenu}>
-              Sign Up
+              About
             </Link>
           </li>
         </ul>
