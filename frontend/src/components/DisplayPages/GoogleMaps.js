@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../App.css'
+import './GoogleMaps.css'
 import {
   GoogleMap,
   useLoadScript,
@@ -9,6 +10,19 @@ import {
 import { formatRelative } from "date-fns";
 import "@reach/combobox/styles.css";
 import mapStyles from './mapStyles';
+
+import usePlacesAutocomplete, {
+  getGeocode,
+  getLatLng,
+} from "use-places-autocomplete";
+import {
+  Combobox,
+  ComboboxInput,
+  ComboboxPopover,
+  ComboboxList,
+  ComboboxOption,
+} from "@reach/combobox";
+import "@reach/combobox/styles.css";
 
 
 const libraries = ["places"];
@@ -61,7 +75,10 @@ function GoogleMaps() {
 
 return (
   <div>
-    <h1>IMWPD </h1>
+    {/* <h1>IMWPD </h1> */}
+
+<Search />
+
     <GoogleMap
       mapContainerStyle={mapContainerStyle}
       zoom={8}
@@ -82,10 +99,11 @@ return (
            />
         ))}
         {selected ? (
-        <InfoWindow position={{lat: selected.lat, lng: selected.lng}} 
+        <InfoWindow 
+        position={{lat: selected.lat, lng: selected.lng}} 
         onCloseClick={() => {
-        setSelected(null);
-        }
+          setSelected(null)}
+        
         }>
           <div>
             <h2>Selected Spot</h2>
@@ -99,4 +117,50 @@ return (
 );
 }
 
+function Search() {
+  const {
+    ready, 
+    value, 
+    suggestions: { status, data }, 
+    setValue, 
+    clearSuggestion,
+  } = usePlacesAutocomplete({
+    requestOptions: {
+      location: {lat: ()  => 43.653225, lng: () => -79.383186 },
+      radius: 200 * 1000,
+  },
+});
+
+  return (
+    <div className="search">
+  <Combobox 
+    onSelect={async (address) => {
+      try {
+        const results = await getGeocode({address});
+        console.log(results[0]);
+      } catch(error) {
+        console.log("error");
+      }
+    
+      // {console.log(address);
+    }}
+  >
+    <ComboboxInput 
+      value={value} 
+      onChange={(e) => {
+        setValue(e.target.value);
+    }}
+    disabled={!ready}
+    placeholder="Enter an address"
+    />
+    <ComboboxPopover>
+      {status === "OK" && 
+      data.map(({ id, description }) => (
+        <ComboboxOption key={id} value={description} />
+      ))}
+    </ComboboxPopover>
+  </Combobox>
+  </div>
+  );
+  }
 export default GoogleMaps;

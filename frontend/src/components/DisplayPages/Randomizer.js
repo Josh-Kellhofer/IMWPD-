@@ -7,15 +7,17 @@ import RandomActivities from '../RandomActivities/RandomActivities';
 
  function Randomizer() {
    
-  const handleClick = () => {
-    console.log('hello, ninjas');
-  }
+  // const handleClick = () => {
+  //   console.log('fun');
+  //   return fun
+    
+  // }
 
   return (
     <div>
   
 <button className='button' buttonStyle='btn--outline'
-        buttonSize='btn--large' onClick={handleClick}>Click for a Random Day!</button>
+        buttonSize='btn--large' onClick={RandomActivities}>Click for a Random Day!</button>
   </div>
   )
 }

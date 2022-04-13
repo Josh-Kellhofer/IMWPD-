@@ -61,9 +61,7 @@ function App() {
         <div className='border-box'>
         <DisplayActivities parentEntries={entries} />
        </div>
-       <div className='border-box'>
-        {/* <RandomActivities entries={entries} /> */}
-       </div>
+      
        
         <Routes>
           <Route exact path='/' element={<Home />} />

@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "@reach/combobox": "^0.16.5",
     "date-fns": "^2.28.0",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.3.0",
+    "use-places-autocomplete": "^2.0.0"
   }
 }
