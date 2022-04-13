@@ -84,6 +84,7 @@ return (
     {/* <h1>IMWPD </h1> */}
 
 <Search panTo={panTo}/>
+<Locate panTo={panTo}/>
 
     <GoogleMap
       mapContainerStyle={mapContainerStyle}
@@ -123,13 +124,32 @@ return (
 );
 }
 
+function Locate ({ panTo }) {
+  return (
+  <button onClick={() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        panTo({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        })
+      }, 
+      () => null, 
+      options
+      );
+  }}>
+    <h1>Locate Me</h1>
+    </button>
+  );
+}
+
 function Search({ panTo }) {
   const {
     ready, 
     value, 
     suggestions: { status, data }, 
     setValue, 
-    clearSuggestion,
+    clearSuggestions,
   } = usePlacesAutocomplete({
     requestOptions: {
       location: {lat: ()  => 43.653225, lng: () => -79.383186 },
@@ -141,6 +161,9 @@ function Search({ panTo }) {
     <div className="search">
   <Combobox 
     onSelect={async (address) => {
+      setValue(address, false);
+      clearSuggestions();
+
       try {
         const results = await getGeocode({address});
         const { lat, lng } = await getLatLng(results[0]);
@@ -162,10 +185,12 @@ function Search({ panTo }) {
     placeholder="Enter an address"
     />
     <ComboboxPopover>
+      <ComboboxList>
       {status === "OK" && 
       data.map(({ id, description }) => (
         <ComboboxOption key={id} value={description} />
       ))}
+      </ComboboxList>
     </ComboboxPopover>
   </Combobox>
   </div>
