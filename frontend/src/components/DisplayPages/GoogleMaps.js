@@ -70,6 +70,12 @@ function GoogleMaps() {
     mapRef.current = map;
   }, []);
 
+  const panTo = React.useCallback(({lat, lng}) => {
+    mapRef.current.panTo({lat, lng});
+    mapRef.current.setZoom(14);
+  }, []);
+
+
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
 
@@ -77,7 +83,7 @@ return (
   <div>
     {/* <h1>IMWPD </h1> */}
 
-<Search />
+<Search panTo={panTo}/>
 
     <GoogleMap
       mapContainerStyle={mapContainerStyle}
@@ -117,7 +123,7 @@ return (
 );
 }
 
-function Search() {
+function Search({ panTo }) {
   const {
     ready, 
     value, 
@@ -137,7 +143,9 @@ function Search() {
     onSelect={async (address) => {
       try {
         const results = await getGeocode({address});
-        console.log(results[0]);
+        const { lat, lng } = await getLatLng(results[0]);
+        panTo({ lat, lng});
+        console.log(lat, lng);
       } catch(error) {
         console.log("error");
       }
