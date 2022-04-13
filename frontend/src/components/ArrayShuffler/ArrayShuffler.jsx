@@ -14,7 +14,7 @@ function randomArrayShuffle(array) {
 
 var alphabet=["a","b","c","d","e"];
 randomArrayShuffle(alphabet); 
-console.log("Random Array Shuffler", randomArrayShuffle(alphabet))
+// console.log("Random Array Shuffler", randomArrayShuffle(alphabet))
 
 
 

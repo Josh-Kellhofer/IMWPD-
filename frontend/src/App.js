@@ -26,6 +26,7 @@ import RandomActivities from "./components/RandomActivities/RandomActivities";
 
 
 
+
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
 import axios from "axios";
@@ -66,9 +67,10 @@ function App() {
        
         <Routes>
           <Route exact path='/' element={<Home />} />
-          <Route exact path='/services' element={<GoogleMaps />} />
+          <Route exact path='/googleMaps' element={<GoogleMaps />} />
           <Route exact path='/products' element={<Products />} />
-          <Route exact path='/sign-up' element={<SignUp />} />
+          {/* <Route exact path='/sign-up' element={<SignUp />} /> */}
+          {/* <Route exact path='/get-started' element={<GetStarted />} /> */}
           <Route path="/register" element={<RegisterPage />} />
          <Route path="/login" element={<LoginPage />} />
          <Route path="/addcar" element={<PrivateRoute><AddCarPage /> </PrivateRoute>}/>

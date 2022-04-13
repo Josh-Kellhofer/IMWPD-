@@ -90,7 +90,7 @@ button:hover {
 }
 
 .services {
-  background-image: src="/images/img-2.jpg";
+  /* background-image: src="/images/img-2.jpg"; */
   background-position: center;
   /* background-size: cover;
   background-repeat: no-repeat;

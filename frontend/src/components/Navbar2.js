@@ -43,7 +43,7 @@ function Navbar2() {
             </Link>
           </li>
           <li className='nav-item'>
-            <Link to='/services' className='nav-links' onClick={closeMobileMenu}>
+            <Link to='/googleMaps' className='nav-links' onClick={closeMobileMenu}>
               Google Maps
             </Link>
           </li>
