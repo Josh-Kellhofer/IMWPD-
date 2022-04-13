@@ -53,8 +53,8 @@ function Navbar2() {
             </Link>
           </li>
           <li className='nav-item'>
-            <Link to='/sign-up' className='nav-links' onClick={closeMobileMenu}>
-              About
+            <Link to='/randomizer' className='nav-links' onClick={closeMobileMenu}>
+              Randomizer
             </Link>
           </li>
         </ul>

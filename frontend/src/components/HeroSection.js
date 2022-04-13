@@ -2,9 +2,17 @@ import React from 'react'
 import { Button } from './Button';
 import './HeroSection.css';
 import '../App.css';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+
+// let navigate = useNavigate(); 
+// const routeChange = () =>{ 
+//   let path ='/sign-up'; 
+//   navigate(path);
 
 function HeroSection() {
+
+ 
   return (
     <div className='hero-container'>
       <video src="/videos/video-1.mp4" autoPlay loop muted />
@@ -18,7 +26,7 @@ function HeroSection() {
           
         </Button>
         <Button className='btns' buttonStyle='btn--primary'
-        buttonSize='btn--large'>
+        buttonSize='btn--large' >
           WATCH TRAILER <i className='far fa-play-circle' />
         </Button>
       </div>

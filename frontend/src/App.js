@@ -15,7 +15,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import AddCarPage from "./pages/AddCarPage/AddCarPage";
 import Home from "./components/DisplayPages/Home";
 import Products from "./components/DisplayPages/Products";
-import SignUp from "./components/DisplayPages/SignUp";
+import Randomizer from "./components/DisplayPages/Randomizer";
 
 
 // Component Imports
@@ -69,7 +69,7 @@ function App() {
           <Route exact path='/' element={<Home />} />
           <Route exact path='/googleMaps' element={<GoogleMaps />} />
           <Route exact path='/products' element={<Products />} />
-          {/* <Route exact path='/sign-up' element={<SignUp />} /> */}
+          <Route exact path='/randomizer' element={<Randomizer />} />
           {/* <Route exact path='/get-started' element={<GetStarted />} /> */}
           <Route path="/register" element={<RegisterPage />} />
          <Route path="/login" element={<LoginPage />} />
