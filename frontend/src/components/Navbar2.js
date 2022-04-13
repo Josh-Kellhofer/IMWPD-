@@ -48,7 +48,7 @@ function Navbar2() {
             </Link>
           </li>
           <li className='nav-item'>
-            <Link to='/products' className='nav-links' onClick={closeMobileMenu}>
+            <Link to='/restApp' className='nav-links' onClick={closeMobileMenu}>
               Google Places
             </Link>
           </li>

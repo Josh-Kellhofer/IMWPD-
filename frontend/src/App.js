@@ -14,7 +14,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import AddCarPage from "./pages/AddCarPage/AddCarPage";
 import Home from "./components/DisplayPages/Home";
-import Products from "./components/DisplayPages/Products";
+import RestaurantApp from "./components/DisplayPages/RestaurantApp";
 import Randomizer from "./components/DisplayPages/Randomizer";
 
 
@@ -66,7 +66,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={<Home />} />
           <Route exact path='/googleMaps' element={<GoogleMaps />} />
-          <Route exact path='/products' element={<Products />} />
+          <Route exact path='/restApp' element={<RestaurantApp />} />
           <Route exact path='/randomizer' element={<Randomizer />} />
           {/* <Route exact path='/get-started' element={<GetStarted />} /> */}
           <Route path="/register" element={<RegisterPage />} />
