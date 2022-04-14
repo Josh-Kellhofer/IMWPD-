@@ -65,7 +65,7 @@ function App() {
        
         <Routes>
           <Route exact path='/' element={<Home />} />
-          <Route exact path='/googleMaps' element={<GoogleMaps />} />
+          {/* <Route exact path='/googleMaps' element={<GoogleMaps />} /> */}
           <Route exact path='/restApp' element={<RestaurantApp />} />
           <Route exact path='/randomizer' element={<Randomizer />} />
           {/* <Route exact path='/get-started' element={<GetStarted />} /> */}
