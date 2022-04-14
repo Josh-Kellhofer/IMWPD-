@@ -35,8 +35,18 @@ import GoogleMaps from "./components/DisplayPages/GoogleMaps";
 
 function App() {
 
-  const [entries, setEntries] = useState([]);
+  useEffect(() => {
+    getRestaurants()
+  }, [])
   
+  const [entries, setEntries] = useState([]);
+
+   
+  async function getRestaurants() {
+  let results =await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=47.3394762%2C-122.2668054&radius=7000&type=restaurant&open_now=true&key=AIzaSyBNOyOJG_-g7kNxQ8_3Ku4eyTE-RSVsR60`);
+  console.log("Nearby Restaurants", results.data)
+  }
+
 
   async function getAllActivities() {
     let response = await axios.get('http://127.0.0.1:8000/api/activities/');
@@ -65,8 +75,8 @@ function App() {
        
         <Routes>
           <Route exact path='/' element={<Home />} />
-          {/* <Route exact path='/googleMaps' element={<GoogleMaps />} /> */}
-          <Route exact path='/restApp' element={<RestaurantApp />} />
+          <Route exact path='/googleMaps' element={<GoogleMaps />} />
+          {/* <Route exact path='/restApp' element={<RestaurantApp />} /> */}
           <Route exact path='/randomizer' element={<Randomizer />} />
           {/* <Route exact path='/get-started' element={<GetStarted />} /> */}
           <Route path="/register" element={<RegisterPage />} />
