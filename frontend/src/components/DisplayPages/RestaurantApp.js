@@ -1,3 +1,89 @@
+import React from 'react';
+
+
+
+const RestaurantApp = (props) => {
+    return ( 
+      <div>
+        
+         <table className="table">
+          <thead>
+            <tr>
+              <th>Food Type</th>
+              <th>Price Rating</th>
+              <th>Open?</th>
+              <th>Location</th>
+              
+            </tr>
+          </thead>
+            
+          <tbody>
+            {props.parentEntries.map((entry, index) => { 
+            return (
+                
+              <tr key={index}>
+                  <td>{index + 1 }</td>
+                  <td>{entry.Types}</td>
+                  {/* <td><button onClick={() => props.selectGame(entry)}>{entry.name}</button></td> */}
+                  <td>{entry.price_level}</td>
+                  <td>{entry.open_now}</td>
+                  <td>{entry.location}</td>
+                  
+              </tr>
+              );
+            })}
+            
+
+            
+          </tbody>
+            
+        </table>
+      </div>
+       
+     );
+}
+ 
+export default RestaurantApp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import React, { useState, useEffect } from 'react';
 // import '../../App.css'
 // import { CssBaseline, Grid } from '@material-ui/core';

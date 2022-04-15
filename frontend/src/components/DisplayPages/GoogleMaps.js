@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import '../../App.css'
 import './GoogleMaps.css'
 import {
@@ -45,6 +46,7 @@ const options = {
 
 function GoogleMaps() {
 
+ 
   const {isLoaded, loadError} = useLoadScript({
     googleMapsApiKey:"AIzaSyBNOyOJG_-g7kNxQ8_3Ku4eyTE-RSVsR60",                                            
     libraries,
@@ -74,6 +76,11 @@ function GoogleMaps() {
     mapRef.current.panTo({lat, lng});
     mapRef.current.setZoom(14);
   }, []);
+
+  async function getRestaurants(lat={lat}, lng={lng}) {
+    let results =await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat}%2C${lng}&radius=7000&type=restaurant&open_now=true&key=AIzaSyBNOyOJG_-g7kNxQ8_3Ku4eyTE-RSVsR60`);
+    console.log("Nearby Restaurants", results.data)
+    }
 
 
   if (loadError) return "Error loading maps";

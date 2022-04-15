@@ -4,6 +4,7 @@ import './HeroSection.css';
 import '../App.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+import { ButtonLink } from './ButtonLink';
 
 // let navigate = useNavigate(); 
 // const routeChange = () =>{ 
@@ -20,11 +21,11 @@ function HeroSection() {
       <p>Can't make decisions?</p>
       <div className="hero-btns">
        
-        <Button className='btns' buttonStyle='btn--outline'
-        buttonSize='btn--large' > 
+        <ButtonLink className='btns' buttonStyle='btn--outline'
+        buttonSize='btn--large' pathname='/randomizer'> 
           GET STARTED
           
-        </Button>
+        </ButtonLink>
         <Button className='btns' buttonStyle='btn--primary'
         buttonSize='btn--large' >
           WATCH TRAILER <i className='far fa-play-circle' />

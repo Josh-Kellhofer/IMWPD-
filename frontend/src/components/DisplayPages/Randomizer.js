@@ -9,17 +9,17 @@ import RandomActivities from '../RandomActivities/RandomActivities';
    
   // const handleClick = () => {
   //   console.log('fun');
-  //   return fun
+  //   return RandomActivities
     
   // }
 
-  return (
+  // return (
     <div>
-  
-{/* <button className='button' buttonStyle='btn--outline'
-        buttonSize='btn--large' onClick={() => handleClick}>Click for a Random Day!</button> */}
+    
+<button className='button' buttonStyle='btn--outline'
+        buttonSize='btn--large' >Click for a Random Day!</button>
   </div>
-  )
-}
+ };
+
 
 export default Randomizer;

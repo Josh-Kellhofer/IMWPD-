@@ -33,25 +33,66 @@ import axios from "axios";
 import GoogleMaps from "./components/DisplayPages/GoogleMaps";
 
 
+
 function App() {
 
-  useEffect(() => {
-    getRestaurants()
-  }, [])
-  
+     
   const [entries, setEntries] = useState([]);
 
-   
+  // const [type, setType] = useState('');
+  // const [priceLevel, setPriceLevel] = useState('');
+  // const [open, setOpen] = useState('');
+  // const [geom, setGeom] = useState('');
+  // const [reviews, setReviews] = useState('')
+  const [geolocation, setGeolocation] = useState(null);
+  const [locationReceived, setLocationReceived] = useState(false);
+
+  const [restaurant, setRestaurant] = useState('');
+
+  useEffect(() => {
+    console.log("useEffect")
+    if(geolocation){
+      console.log("geolocationdefined")
+      getRestaurants()
+    }
+      
+  }, [locationReceived])
+
+ 
+ navigator.geolocation.getCurrentPosition(function(position) {
+console.log(position)
+
+
+setGeolocation({lat: position.coords.latitude, lng: position.coords.longitude})
+if (locationReceived==false){
+  setLocationReceived(true)
+}
+  }, function(error){
+    console.log(error)
+  }, {timeout: 1000} )
+
+  
   async function getRestaurants() {
-  let results =await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=47.3394762%2C-122.2668054&radius=7000&type=restaurant&open_now=true&key=AIzaSyBNOyOJG_-g7kNxQ8_3Ku4eyTE-RSVsR60`);
-  console.log("Nearby Restaurants", results.data)
+    
+  let response =await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${geolocation.lat}%2C${geolocation.lng}&radius=7000&type=restaurant&open_now=true&key=AIzaSyBNOyOJG_-g7kNxQ8_3Ku4eyTE-RSVsR60`);
+  console.log("Nearby Restaurants", response.data)
+  setRestaurant(response.data)
+  // setType(response.data.types)
+  // console.log("Set Type", type)
+  // setPriceLevel(response.data.price_level)
+  // console.log("Price Level", priceLevel)
+  // setOpen(response.data.opening_hours.open_now)
+  // console.log("Open", open)
+  // setGeom(response.data.geometry.location)
+  // console.log("Location", geom)
+  // setReviews(response.data.)
   }
 
 
   async function getAllActivities() {
     let response = await axios.get('http://127.0.0.1:8000/api/activities/');
     setEntries(response.data);
-    console.log(response.data)
+    
   }
 
   // async function getRandomActivities() {
@@ -68,16 +109,14 @@ function App() {
     <div>
     <Router>
         <Navbar2 />
-        <div className='border-box'>
-        <DisplayActivities parentEntries={entries} />
-       </div>
-      
+       
        
         <Routes>
           <Route exact path='/' element={<Home />} />
+          
           <Route exact path='/googleMaps' element={<GoogleMaps />} />
           {/* <Route exact path='/restApp' element={<RestaurantApp />} /> */}
-          <Route exact path='/randomizer' element={<Randomizer />} />
+          <Route exact path='/randomizer' element={<DisplayActivities parentEntries={entries} />} />
           {/* <Route exact path='/get-started' element={<GetStarted />} /> */}
           <Route path="/register" element={<RegisterPage />} />
          <Route path="/login" element={<LoginPage />} />

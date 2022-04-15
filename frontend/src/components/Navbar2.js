@@ -49,7 +49,7 @@ function Navbar2() {
           </li>
           <li className='nav-item'>
             <Link to='/restApp' className='nav-links' onClick={closeMobileMenu}>
-              Google Places
+              Restaurant Search
             </Link>
           </li>
           <li className='nav-item'>
@@ -58,7 +58,7 @@ function Navbar2() {
             </Link>
           </li>
         </ul>
-        {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
+        {button && <Button buttonStyle='btn--outline' pathname='/sign'>SIGN UP</Button>}
         </div>
         <div className='menu-icon' onClick={handleClick}>
           

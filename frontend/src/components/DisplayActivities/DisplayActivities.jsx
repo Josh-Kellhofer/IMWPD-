@@ -3,9 +3,51 @@ import RandomActivities from '../RandomActivities/RandomActivities';
 
 
 const DisplayActivities = (props) => {
+
+  function randomizeActivities(entries) {
+    let breakfastArray = entries.map(breakfast => {
+      return breakfast.breakfast;
+  });
+     
+  
+  let morningActivity = entries.map(mornactivity => {
+      return mornactivity.morning_activity
+  });
+      
+  let lunch = entries.map(lunch => {
+       return lunch.lunch
+    });
+     
+  let afternoonActivity = entries.map(afterActivity => {
+        return afterActivity.afternoon_activity
+      });
+       
+  let dinner = entries.map(dinner => {
+        return dinner.dinner
+       });
+       
+  let nightActivity = entries.map(nightTimeActivity => {
+        return nightTimeActivity.night_time_activity
+      });
+       
+  
+  // create a new array with random items from each feature array
+  
+  let myBreakfast = breakfastArray[Math.floor(Math.random() * breakfastArray.length)];
+  let myMorningActivity = morningActivity[Math.floor(Math.random() * morningActivity.length)];
+  let myLunch = lunch[Math.floor(Math.random() * lunch.length)];
+  let myAfternoonActivity = afternoonActivity[Math.floor(Math.random() * afternoonActivity.length)];
+  let myDinner = dinner[Math.floor(Math.random() * dinner.length)];
+  let myNightActivity = nightActivity[Math.floor(Math.random() * nightActivity .length)];
+  
+  return {myBreakfast, myMorningActivity, myLunch, myAfternoonActivity, myDinner, myNightActivity}
+  }
+let randomDay = randomizeActivities(props.parentEntries)
+
     return ( 
+      <div className='border-box'>
       <div>
-        <RandomActivities entries={props.parentEntries} />
+        {/* <RandomActivities entries={props.parentEntries} /> */}
          <table className="table">
           <thead>
             <tr>
@@ -20,21 +62,21 @@ const DisplayActivities = (props) => {
           </thead>
             
           <tbody>
-            {props.parentEntries.map((entry, index) => { 
-            return (
+            {/* {props.parentEntries.map((entry, index) => {  */}
+            {/* return ( */}
                 
-              <tr key={index}>
-                  <td>{index + 1 }</td>
-                  <td>{entry.breakfast}</td>
+              <tr>
+                  <td>{1}</td>
+                  <td>{randomDay.myBreakfast}</td>
                   {/* <td><button onClick={() => props.selectGame(entry)}>{entry.name}</button></td> */}
-                  <td>{entry.morning_activity}</td>
-                  <td>{entry.lunch}</td>
-                  <td>{entry.afternoon_activity}</td>
-                  <td>{entry.dinner}</td>
-                  <td>{entry.night_time_activity}</td>
+                  <td>{randomDay.myMorningActivity}</td>
+                  <td>{randomDay.myLunch}</td>
+                  <td>{randomDay.myAfternoonActivity}</td>
+                  <td>{randomDay.myDinner}</td>
+                  <td>{randomDay.myNightActivity}</td>
               </tr>
-              );
-            })}
+              {/* ); */}
+            {/* })} */}
             
 
             
@@ -42,7 +84,7 @@ const DisplayActivities = (props) => {
             
         </table>
       </div>
-       
+      </div>
      );
 }
  
